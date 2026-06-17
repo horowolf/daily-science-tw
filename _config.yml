@@ -1,0 +1,49 @@
+title: 生活科普
+description: 用台灣中小學課綱重新認識日常生活的有趣科學知識
+baseurl: "/daily-science-tw"
+url: "https://horowolf.github.io"
+lang: zh-TW
+timezone: Asia/Taipei
+
+theme: minima
+
+minima:
+  skin: classic
+
+author:
+  name: horowolf
+
+permalink: /:categories/:slug/
+
+collections:
+  science:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: "science"
+    values:
+      layout: "post"
+
+# 文章按 publish_date 倒序排列
+future: false
+show_drafts: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - .github/
+  - WRITING_RULES.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/

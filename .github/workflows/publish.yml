@@ -1,0 +1,46 @@
+name: 自動發文到 Facebook 與 Instagram
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # 每天 09:50 台灣時間（UTC+8）檢查一次，對應 UTC 01:50
+    - cron: '50 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests python-frontmatter pytz
+
+      - name: 執行發文腳本
+        env:
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python .github/scripts/publish_posts.py
+
+      - name: Commit 發文狀態更新
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet && git diff --staged --quiet || \
+            (git add -A && git commit -m "chore: mark published posts [skip ci]")
+          git push
