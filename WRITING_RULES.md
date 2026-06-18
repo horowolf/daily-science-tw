@@ -61,7 +61,11 @@
   - 例：`science/physics/assets/bernoulli-01.svg`
 - **用途**：示意圖、簡單數線圖、比較表——不做複雜數據圖
 - **風格**：簡潔線條，避免過多顏色（最多 3 色）
-- **可選**：圖表不是必須，純文字也可以發布
+- **優先順序（尤其 Instagram 需要圖片才能發文）**：
+  1. 自製圖表（SVG/PNG 示意圖）——首選
+  2. AI 生成圖片——次選，風格需與整體一致
+  3. 無圖——Instagram 略過，僅發 Facebook
+- **可選**：純文字仍可發布（Facebook），IG 會自動跳過
 
 ---
 
@@ -80,6 +84,11 @@ platforms:
   instagram: true
 summary: ""         # 一句話摘要，50 字以內，用於社群預覽與網站 meta description
 cover_chart: ""     # 可選，圖表路徑，例：science/physics/assets/bernoulli-01.svg
+curriculum: ""      # 可選，對應課綱，例：國中理化（摩擦力）、國中地球科學（月相）
+source_long: ""     # 可選，若本篇是從長文切出的短篇，填入長文 slug
+series: ""          # 可選，系列名稱，例：雪地駕駛物理學
+series_part: 1      # 可選，本篇在系列中的順序（1 開始）
+series_total: 2     # 可選，系列總篇數
 ---
 ```
 
@@ -96,6 +105,27 @@ cover_chart: ""     # 可選，圖表路徑，例：science/physics/assets/berno
   ↓ push 到 main
 GitHub Actions 自動偵測 → 發 FB / IG → 改為 published
 ```
+
+### 長文與短篇的關係
+
+**推薦流程：先寫長文，再切短篇。**
+
+1. 寫完整版長文（500–800 字），確認知識點正確、邏輯清楚，存為 `[slug]-full.md`
+2. 從長文萃取 2–3 個核心點，各自寫成短篇（150–250 字）
+3. 短篇的 `source_long` 欄位填入長文 slug
+4. 短篇社群貼文末尾加一行：「完整說明 → [連結]」
+5. 長文可同步發到 GitHub Pages，作為深度內容讓有興趣的讀者自行閱讀
+
+長文本身不一定要發社群，短篇才是社群主力。長文也可以作為寫短篇時的草稿和查核依據。
+
+---
+
+### 系列文章順序規則
+
+- 系列文章的 `publish_date` 必須嚴格按照 `series_part` 排序
+- 建議間距：同系列相鄰兩篇至少間隔 **1 天**（讓讀者有吸收時間）
+- 發文腳本會檢查：若某篇的 `series_part > 1`，前一篇必須已是 `published` 才會發出
+- 排程時建議先把整個系列的 `publish_date` 一起填好，避免漏排
 
 ---
 
