@@ -9,7 +9,7 @@ platforms:
   facebook: true
   instagram: true
 summary: "月亮不發光，它的亮面永遠朝著太陽。只要看得到月亮，不管什麼月相，都可以用來估太陽的方向。"
-cover_chart: ""
+cover_chart: "science/earth-science/assets/moon-geometry-1-sun-direction.svg"
 curriculum: 國中地球科學（月相成因）
 series: "用月亮看世界"
 series_part: 1

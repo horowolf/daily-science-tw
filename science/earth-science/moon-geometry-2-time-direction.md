@@ -9,7 +9,7 @@ platforms:
   facebook: true
   instagram: true
 summary: "月亮外弧和內弧的兩個交點連一條線，這條線大致平行於南北方向——前提是月亮夠低、夠清楚。"
-cover_chart: ""
+cover_chart: "science/earth-science/assets/moon-geometry-2-time-direction.svg"
 curriculum: 國中地球科學（月相、天球）
 series: "用月亮看世界"
 series_part: 2

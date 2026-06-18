@@ -9,7 +9,7 @@ platforms:
   facebook: true
   instagram: true
 summary: "月亮可以告訴你太陽的大概方向，而太陽在哪個位置，就對應幾點——這不是規律，是地球自轉的幾何。"
-cover_chart: ""
+cover_chart: "science/earth-science/assets/moon-geometry-3-time.svg"
 curriculum: 國中地球科學（地球自轉、月相）
 series: "用月亮看世界"
 series_part: 3
